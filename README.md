@@ -33,7 +33,9 @@ Displays a table with values [Date, Initial Forecast, Updated Forecast, Temperat
 
 
 Assumptions:
+
 1. Sales forecast date values should be greater than the present date/time, so the service will ignore any past dates and returns updated forecasts at 0
+
 2. MOD REWRITE is enabled to allow .htaccess routing
 
 
