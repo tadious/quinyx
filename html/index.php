@@ -53,9 +53,9 @@
                     <li class="hidden">
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a class="page-scroll" href="#geolocate">Change Geo Coordinates</a>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -81,13 +81,15 @@
                         foreach ($updatedForecast as $forecast) {
                             if(is_numeric($forecast[1])) {
                                 $date = date('Y-m-d H:i:s D', strtotime($forecast[0]));
+                                $temp = ($forecast[3] !== null)? $forecast[3] : "No weather forecast";
+                                $rain = ($forecast[4] !== null)? $forecast[4] : "No weather forecast";
                                 echo "
                                     <tr>
                                         <td>{$date}</td>
                                         <td>{$forecast[1]}</td>
                                         <td>{$forecast[2]}</td>
-                                        <td>{$forecast[3]}</td>
-                                        <td>{$forecast[4]}</td>
+                                        <td>{$temp}</td>
+                                        <td>{$rain}</td>
                                     </tr>
                                 ";
                             }
@@ -99,15 +101,14 @@
     </section>
 
     <!-- About Section -->
-    <section id="geolocate" class="about-section">
+    <!--<section id="geolocate" class="about-section">
         <div class="container">
-            <!-- start map-->
             <div class="map-wrapper">
                 <div class="map">
-                    <div id="map" class="map-inner" style="width:100%;height:500px;"></div><!-- /.map-inner --> <!-- style="max-height:250px;"-->
+                    <div id="map" class="map-inner" style="width:100%;height:500px;"></div>
                 </div>
             </div>
-            <!-- end map -->
+            
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Scrolling Nav</h1>
@@ -116,7 +117,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <!-- jQuery -->
     <script src="../../../../html/js/jquery.min.js"></script>
@@ -141,7 +142,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#sales-forecasts').DataTable();
+            $('#sales-forecasts').DataTable({"pageLength": 50});
         });         
     </script>
 
